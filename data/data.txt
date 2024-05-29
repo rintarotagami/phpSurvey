@@ -1,0 +1,4 @@
+{"name":"rin","email":"test@example.com","feedback":"\u3084\u3070\u3044\u3063\u3059\uff01"}
+{"name":"rin","email":"test@example.com","feedback":"\u308a\u3093"}
+{"name":"rin","email":"test@example.com","feedback":"\u308a\u3093"}
+{"name":"rin","email":"test@example.com","feedback":"\u308a\u3093"}
