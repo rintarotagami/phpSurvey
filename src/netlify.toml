@@ -1,0 +1,5 @@
+[[redirects]]
+    from = "/src"
+    to = "https://marvellous-sheep.netlify.com"
+    status = 200
+    force = true
