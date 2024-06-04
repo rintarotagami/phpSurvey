@@ -52,10 +52,10 @@
             </table>
             <p class="text-sm text-gray-700 mb-4">ご協力ありがとうございました。</p>
             <div class="mt-8">
-                <a href="src/survey.php" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">別の回答を出す</a>
+                <a href="survey.php" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">別の回答を出す</a>
             </div>
             <div class="mt-8">
-                <a href="src/read.php" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">回答一覧を表示</a>
+                <a href="read.php" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">回答一覧を表示</a>
             </div>
         </div>
     </div>
