@@ -16,7 +16,7 @@ $feedback = $_POST['feedback'];
 
 //2. DB接続します
 //*** function化する！  *****************
-include("funcs.php");
+include("src/funcs.php");
 $pdo = db_conn();
 
 
@@ -33,5 +33,5 @@ if ($status == false) {
     sql_error($stmt);
 } else {
     // surveyConfirmed.phpにnameとemailとfeedbackの値を送る
-    redirect("src/surveyConfirmed.php?name=" . urlencode($name) . "&email=" . urlencode($email) . "&feedback=" . urlencode($feedback));
+    redirect("surveyConfirmed.php?name=" . urlencode($name) . "&email=" . urlencode($email) . "&feedback=" . urlencode($feedback));
 }
