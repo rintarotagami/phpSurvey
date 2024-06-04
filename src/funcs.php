@@ -15,7 +15,7 @@ function db_conn()
         // $db_host = "localhost"; //DBホスト
         $db_name = "rin-study_survey";    //さくらのサーバー_データベース名
         $db_id   = "rin-study";      //さくらのサーバー_アカウント名
-        $db_pw   = "qs8tt.f3ZtXC";          //さくらのサーバー_パスワード
+        $db_pw   = "kayukanoyuka2525";          //さくらのサーバー_パスワード
         $db_host = "localhost"; //さくらのサーバー_DBホスト
         return new PDO('mysql:dbname=' . $db_name . ';charset=utf8;host=' . $db_host, $db_id, $db_pw);
     } catch (PDOException $e) {

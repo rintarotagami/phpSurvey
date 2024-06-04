@@ -33,5 +33,5 @@ if ($status == false) {
     sql_error($stmt);
 } else {
     // surveyConfirmed.phpにnameとemailとfeedbackの値を送る
-    redirect("surveyConfirmed.php?name=" . urlencode($name) . "&email=" . urlencode($email) . "&feedback=" . urlencode($feedback));
+    redirect("src/surveyConfirmed.php?name=" . urlencode($name) . "&email=" . urlencode($email) . "&feedback=" . urlencode($feedback));
 }

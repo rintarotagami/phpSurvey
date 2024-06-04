@@ -73,7 +73,7 @@ if ($status == false) {
     </div>
 
 
-    <a href="index.php" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-8">別の回答を出す</a>
+    <a href="src/index.php" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-8">別の回答を出す</a>
     <footer class="w-full p-4 bg-gradient-to-r from-gray-700 to-gray-900">
         <p class="text-white text-center text-xl">© 2023 RinIogi</p>
     </footer>
