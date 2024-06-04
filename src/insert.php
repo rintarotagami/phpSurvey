@@ -16,7 +16,7 @@ $feedback = $_POST['feedback'];
 
 //2. DB接続します
 //*** function化する！  *****************
-include("src/funcs.php");
+include("funcs.php");
 $pdo = db_conn();
 
 
