@@ -16,7 +16,7 @@ function db_conn()
         $db_name = "rin-study_survey";    //さくらのサーバー_データベース名
         $db_id   = "rin-study";      //さくらのサーバー_アカウント名
         $db_pw   = "kayukanoyuka2525";          //さくらのサーバー_パスワード
-        $db_host = "localhost"; //さくらのサーバー_DBホスト
+        $db_host = "mysql57.rin-study.sakura.ne.jp"; //さくらのサーバー_DBホスト
         return new PDO('mysql:dbname=' . $db_name . ';charset=utf8;host=' . $db_host, $db_id, $db_pw);
     } catch (PDOException $e) {
         exit('DB Connection Error:' . $e->getMessage());
