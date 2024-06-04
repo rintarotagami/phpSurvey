@@ -26,19 +26,19 @@
     </header>
 
     <div class="w-full h-screen flex justify-center items-center">
-        <form action="surveyConfirmed.php" method="post" class="w-1/2 bg-white p-8 rounded-lg shadow-lg">
+        <form action="insert.php" method="post" class="w-1/2 bg-white p-8 rounded-lg shadow-lg">
             <h2 class="text-lg font-bold mb-6">アンケートフォーム</h2>
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">名前:</label>
-                <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
             <div class="mb-4">
                 <label for="email" class="block text-sm font-medium text-gray-700">メールアドレス:</label>
-                <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
             <div class="mb-6">
                 <label for="feedback" class="block text-sm font-medium text-gray-700">フィードバック:</label>
-                <textarea id="feedback" name="feedback" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                <textarea id="feedback" name="feedback" rows="4" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
             </div>
             <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">送信</button>
         </form>

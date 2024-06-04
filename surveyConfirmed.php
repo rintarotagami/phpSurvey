@@ -1,19 +1,3 @@
-<?php
-$name = $_POST['name'];
-$email = $_POST['email'];
-$feedback = $_POST['feedback'];
-
-$data = new stdClass();
-$data->name = $name;
-$data->email = $email;
-$data->feedback = $feedback;
-
-$file = fopen('../data/data.txt', "a");    // ファイル読み込み
-fwrite($file, json_encode($data) . PHP_EOL);    // ファイル書き込み
-fclose($file);    // ファイル閉じる
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +9,7 @@ fclose($file);    // ファイル閉じる
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
     <header class="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-between">
         <div class="flex items-center justify-start">
             <Hamburger />
@@ -41,7 +25,7 @@ fclose($file);    // ファイル閉じる
             <ConfigButton />
         </div>
     </header>
-    <div class="w-full h-screen flex justify-center items-center">
+    <div class="h-full flex-grow flex justify-center items-center">
         <div class="w-1/2 bg-white p-8 rounded-lg shadow-lg">
             <h2 class="text-lg font-bold mb-6">下記の内容でアンケートを送信しました</h2>
             <table class="w-full text-sm text-left text-gray-500">
@@ -54,15 +38,15 @@ fclose($file);    // ファイル閉じる
                 <tbody>
                     <tr class="bg-white border-b">
                         <td class="px-6 py-4">名前</td>
-                        <td class="px-6 py-4"><?php echo htmlspecialchars($name); ?></td>
+                        <td class="px-6 py-4"><?php echo htmlspecialchars($_GET['name']); ?></td>
                     </tr>
                     <tr class="bg-white border-b">
                         <td class="px-6 py-4">メールアドレス</td>
-                        <td class="px-6 py-4"><?php echo htmlspecialchars($email); ?></td>
+                        <td class="px-6 py-4"><?php echo htmlspecialchars($_GET['email']); ?></td>
                     </tr>
                     <tr class="bg-white">
                         <td class="px-6 py-4">フィードバック</td>
-                        <td class="px-6 py-4"><?php echo nl2br(htmlspecialchars($feedback)); ?></td>
+                        <td class="px-6 py-4"><?php echo nl2br(htmlspecialchars($_GET['feedback'])); ?></td>
                     </tr>
                 </tbody>
             </table>

@@ -1,3 +1,27 @@
+<?php
+// // ファイルを読み込む
+// $filename = 'data/data.txt';
+// $data = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+// // データをJSONから配列に変換
+// $feedbackList = array_map(function ($json) {
+//     return json_decode($json, true);
+// }, $data);
+
+include("funcs.php");
+$pdo = db_conn();
+
+$stmt = $pdo->prepare("SELECT name, email, feedback FROM survey_results ORDER BY created_at DESC");
+$status = $stmt->execute();
+
+if ($status == false) {
+    sql_error($stmt);
+} else {
+    $feedbackList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +32,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="h-screen">
     <header class="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-between">
         <div class="flex items-center justify-start">
             <Hamburger />
@@ -25,17 +49,6 @@
         </div>
     </header>
 
-    <?php
-    // ファイルを読み込む
-    $filename = 'data/data.txt';
-    $data = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-    // データをJSONから配列に変換
-    $feedbackList = array_map(function($json) {
-        return json_decode($json, true);
-    }, $data);
-    ?>
-
     <div class="container mx-auto mt-8">
         <div class="overflow-x-auto relative">
             <table class="w-full text-sm text-left text-gray-500">
@@ -47,20 +60,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($feedbackList as $feedback): ?>
-                    <tr class="bg-white border-b">
-                        <td class="py-4 px-6"><?= htmlspecialchars($feedback['name']) ?></td>
-                        <td class="py-4 px-6"><?= htmlspecialchars($feedback['email']) ?></td>
-                        <td class="py-4 px-6"><?= htmlspecialchars($feedback['feedback']) ?></td>
-                    </tr>
+                    <?php foreach ($feedbackList as $feedback) : ?>
+                        <tr class="bg-white border-b">
+                            <td class="py-4 px-6"><?= h($feedback['name']) ?></td>
+                            <td class="py-4 px-6"><?= h($feedback['email']) ?></td>
+                            <td class="py-4 px-6"><?= h($feedback['feedback']) ?></td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
 
-    
-    <a href="survey.php" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">別の回答を出す</a>
+
+    <a href="index.php" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-8">別の回答を出す</a>
     <footer class="w-full p-4 bg-gradient-to-r from-gray-700 to-gray-900">
         <p class="text-white text-center text-xl">© 2023 RinIogi</p>
     </footer>
