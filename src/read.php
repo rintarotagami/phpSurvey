@@ -11,13 +11,14 @@
 include("funcs.php");
 $pdo = db_conn();
 
-$stmt = $pdo->prepare("SELECT name, email, feedback FROM survey_results ORDER BY created_at DESC");
+$sql = "SELECT * FROM survey_results";
+$stmt = $pdo->prepare($sql);
 $status = $stmt->execute();
 
 if ($status == false) {
     sql_error($stmt);
 } else {
-    $feedbackList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $values = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 ?>
@@ -37,7 +38,7 @@ if ($status == false) {
         <div class="flex items-center justify-start">
             <Hamburger />
             <div class="logo">
-                <span class="text-white text-xl">WithOutput</span>
+                <span class="text-white text-xl">PHPSurvey</span>
             </div>
         </div>
         <div class="flex-grow flex items-center justify-center">
@@ -60,11 +61,15 @@ if ($status == false) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($feedbackList as $feedback) : ?>
+                    <?php foreach ($values as $v) : ?>
                         <tr class="bg-white border-b">
-                            <td class="py-4 px-6"><?= h($feedback['name']) ?></td>
-                            <td class="py-4 px-6"><?= h($feedback['email']) ?></td>
-                            <td class="py-4 px-6"><?= h($feedback['feedback']) ?></td>
+                            <td class="py-4 px-6"><?= h($v['name']) ?></td>
+                            <td class="py-4 px-6"><?= h($v['email']) ?></td>
+                            <td class="py-4 px-6"><?= h($v['feedback']) ?></td>
+                            <td class="py-4 px-6">
+                                <a href="detail.php?id=<?= $v['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded inline-block">修正</a>
+                                <a href="delete.php?id=<?= $v['id'] ?>" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded inline-block">削除</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -13,7 +13,7 @@
         <div class="flex items-center justify-start">
             <Hamburger />
             <div class="logo">
-                <span class="text-white text-xl">WithOutput</span>
+                <span class="text-white text-xl">PHPSurvey</span>
             </div>
         </div>
         <div class="flex-grow flex items-center justify-center">
