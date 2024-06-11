@@ -51,6 +51,7 @@ if ($status == false) {
             </div>
         </div>
         <div class="flex items-center justify-end">
+            <span class="text-white mr-4"><?php echo $_SESSION["name"]; ?>さん</span>
             <a href="user.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded inline-block">管理/閲覧者追加</a>
             <a href="logout.php" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded inline-block">ログアウト</a>
         </div>

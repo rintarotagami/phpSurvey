@@ -26,6 +26,7 @@ include "funcs.php";
         </div>
         <div class="flex items-center justify-end">
             <?php if (isset($_SESSION['chk_ssid'])) : ?>
+                <span class="text-white mr-4"><?php echo $_SESSION["name"]; ?>さん</span>
                 <a href="logout.php" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">ログアウト</a>
             <?php else : ?>
                 <a href="login.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">ログイン</a>
