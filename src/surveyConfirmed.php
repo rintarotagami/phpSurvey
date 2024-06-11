@@ -1,3 +1,9 @@
+<?php
+session_start();
+//※htdocsと同じ階層に「includes」を作成してfuncs.phpを入れましょう！
+//include "../../includes/funcs.php";
+include "funcs.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,17 +18,18 @@
 <body class="flex flex-col min-h-screen">
     <header class="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-between">
         <div class="flex items-center justify-start">
-            <Hamburger />
             <div class="logo">
-                <span class="text-white text-xl">WithOutput</span>
+                <a href="index.php">
+                    <span class="text-white text-xl">PHPSurvey</span>
+                </a>
             </div>
         </div>
-        <div class="flex-grow flex items-center justify-center">
-            <SearchBar />
-        </div>
         <div class="flex items-center justify-end">
-            <ProfileToggleButton />
-            <ConfigButton />
+            <?php if (isset($_SESSION['chk_ssid'])) : ?>
+                <a href="logout.php" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">ログアウト</a>
+            <?php else : ?>
+                <a href="login.php" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">ログイン</a>
+            <?php endif; ?>
         </div>
     </header>
     <div class="h-full flex-grow flex justify-center items-center">

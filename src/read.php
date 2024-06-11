@@ -1,4 +1,12 @@
 <?php
+//0. SESSION開始！！
+session_start();
+//１．関数群の読み込み
+include("funcs.php");
+
+//LOGINチェック → funcs.phpへ関数化しましょう！
+sschk();
+
 // // ファイルを読み込む
 // $filename = 'data/data.txt';
 // $data = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -8,13 +16,13 @@
 //     return json_decode($json, true);
 // }, $data);
 
-include("funcs.php");
+//２．データ登録SQL作成
 $pdo = db_conn();
-
 $sql = "SELECT * FROM survey_results";
 $stmt = $pdo->prepare($sql);
 $status = $stmt->execute();
 
+//３．データ表示/全データ取得
 if ($status == false) {
     sql_error($stmt);
 } else {
@@ -36,18 +44,17 @@ if ($status == false) {
 <body class="h-screen">
     <header class="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-between">
         <div class="flex items-center justify-start">
-            <Hamburger />
             <div class="logo">
-                <span class="text-white text-xl">PHPSurvey</span>
+                <a href="index.php">
+                    <span class="text-white text-xl">PHPSurvey</span>
+                </a>
             </div>
         </div>
-        <div class="flex-grow flex items-center justify-center">
-            <SearchBar />
-        </div>
         <div class="flex items-center justify-end">
-            <ProfileToggleButton />
-            <ConfigButton />
+            <a href="user.php" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded inline-block">管理/閲覧者追加</a>
+            <a href="logout.php" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded inline-block">ログアウト</a>
         </div>
+
     </header>
 
     <div class="container mx-auto mt-8">
@@ -67,8 +74,10 @@ if ($status == false) {
                             <td class="py-4 px-6"><?= h($v['email']) ?></td>
                             <td class="py-4 px-6"><?= h($v['feedback']) ?></td>
                             <td class="py-4 px-6">
-                                <a href="detail.php?id=<?= $v['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded inline-block">修正</a>
-                                <a href="delete.php?id=<?= $v['id'] ?>" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded inline-block">削除</a>
+                                <?php if ($_SESSION["kanri_flg"] == "1") { ?>
+                                    <a href="detail.php?id=<?= $v['id'] ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded inline-block">修正</a>
+                                    <a href="delete.php?id=<?= $v['id'] ?>" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded inline-block">削除</a>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

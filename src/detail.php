@@ -1,8 +1,10 @@
 <?php
+session_start();
 
 $id = $_GET["id"]; //GET
-
 include("funcs.php");
+sschk();
+
 $pdo = db_conn();
 
 //２．データ登録SQL作成

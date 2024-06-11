@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 //1. POSTデータ取得
 $name   = $_POST["name"];
 $email  = $_POST["email"];
@@ -8,6 +10,7 @@ $id     = $_POST["id"];
 //2. DB接続します
 //*** function化する！  *****************
 include("funcs.php");
+sschk();
 $pdo = db_conn();
 
 //３．データ登録SQL作成
