@@ -14,6 +14,13 @@ $lpw       = filter_input( INPUT_POST, "lpw" );
 $kanri_flg = filter_input( INPUT_POST, "kanri_flg" );
 $lpw       = password_hash($lpw, PASSWORD_DEFAULT);   //パスワードハッシュ化
 
+// 名前に役割を追加
+if ($kanri_flg == 0) {
+    $name .= "（閲覧者）";
+} elseif ($kanri_flg == 1) {
+    $name .= "（管理者）";
+}
+
 //2. DB接続します
 $pdo = db_conn();
 
