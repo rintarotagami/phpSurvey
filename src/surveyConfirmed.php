@@ -61,9 +61,11 @@ include "funcs.php";
             <div class="mt-8">
                 <a href="index.php" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">別の回答を出す</a>
             </div>
-            <div class="mt-8">
-                <a href="read.php" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">回答一覧を表示</a>
-            </div>
+            <?php if (isset($_SESSION['chk_ssid'])) : ?>
+                <div class="mt-8">
+                    <a href="read.php" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">回答一覧を表示</a>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
     <footer class="w-full p-4 bg-gradient-to-r from-gray-700 to-gray-900">
